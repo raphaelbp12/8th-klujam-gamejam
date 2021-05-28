@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 
-public class ButtonHandler : MonoBehaviour
+public class ButtonHandler : MonoBehaviour, IPointerClickHandler
 {
     public Action ClickFunc = null;
     // Start is called before the first frame update

@@ -9,6 +9,13 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] Transform cardSlotContainer;
     [SerializeField] Transform cardSlotTemplate;
 
+    private GameRules gameRules;
+
+    private void Start()
+    {
+        gameRules = GameObject.FindObjectOfType<GameRules>();
+    }
+
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -28,7 +35,7 @@ public class UI_Inventory : MonoBehaviour
 
             itemSlotRectTransform.GetComponent<ButtonHandler>().ClickFunc = () =>
             {
-                Debug.Log("Click func");
+                gameRules.SelectCard(itemSlotRectTransform);
             };
 
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);

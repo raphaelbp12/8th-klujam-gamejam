@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameRules : MonoBehaviour
 {
     [SerializeField] private UI_Inventory uiInventory;
+    private RectTransform selectedItemSlotRectTransform;
 
     private Inventory inventory;
 
@@ -19,5 +20,10 @@ public class GameRules : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SelectCard(RectTransform itemSlotRectTransform)
+    {
+        selectedItemSlotRectTransform = itemSlotRectTransform;
     }
 }
