@@ -14,15 +14,14 @@ public class Card : MonoBehaviour
 
     public CardType cardType { get; set; }
 
-    // Start is called before the first frame update
-    void Start()
+    public Sprite GetSprite()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        switch (cardType) {
+            default:
+            case CardType.Food:     return CardAssets.Instance.foodCardSprite;
+            case CardType.Shower:   return CardAssets.Instance.showerCardSprite;
+            case CardType.Play:     return CardAssets.Instance.playCardSprite;
+            case CardType.Medicin:  return CardAssets.Instance.medicinCardSprite;
+        }
     }
 }
