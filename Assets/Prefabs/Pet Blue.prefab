@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: _cdwToStay
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: _weigthToSpawn

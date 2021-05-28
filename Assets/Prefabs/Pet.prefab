@@ -144,13 +144,21 @@ MonoBehaviour:
   _weigthToSpawn: 1
   _needs:
   - name: Food
-    needType: 0
+    _type: 0
+    _cdwNeeding: 2
+    _weightToNeed: 2
   - name: Shower
-    needType: 1
+    _type: 1
+    _cdwNeeding: 2
+    _weightToNeed: 2
   - name: Play
-    needType: 2
+    _type: 2
+    _cdwNeeding: 2
+    _weightToNeed: 2
   - name: Medicin
-    needType: 3
+    _type: 3
+    _cdwNeeding: 2
+    _weightToNeed: 2
 --- !u!1 &3619520532142999986
 GameObject:
   m_ObjectHideFlags: 0
