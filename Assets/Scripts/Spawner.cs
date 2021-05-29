@@ -51,8 +51,7 @@ public class Spawner : MonoBehaviour
         while (internalCdw >= 0)
         {
             internalCdw -= Time.deltaTime;
-            //TODO: ChamarBarra
-            //Debug.Log(internalCdw / spawnInfo.Pet.CdwToStay);
+            spawnInfo.ProgressBar.SetBarValue(internalCdw / spawnInfo.Pet.CdwToStay);
             yield return new WaitForFixedUpdate();
         }
 
@@ -113,6 +112,7 @@ public class SpawnInformation
 
     public Pet Pet => CurrentGameObject.GetComponent<Pet>();
     public float CdwToSpawn => _cdwToSpawn;
+    public BarBehaviour ProgressBar => _spawnLocation.BarBehaviour;
     public Transform SpawnLocation => _spawnLocation.CurrentLocation;
     public GameObject Prefab => GetPrefab();
 }

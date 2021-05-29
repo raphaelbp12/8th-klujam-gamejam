@@ -9,4 +9,13 @@ public class SpawnLocation : MonoBehaviour
     private Transform _currentLocation;
 
     public Transform CurrentLocation => _currentLocation;
+
+    public BarBehaviour BarBehaviour { get; private set; }
+
+
+    private void Awake()
+    {
+        BarBehaviour = this.GetComponentInChildren<BarBehaviour>();
+    }
+
 }
