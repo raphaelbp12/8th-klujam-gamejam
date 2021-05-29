@@ -10,7 +10,7 @@ public class Reputation : MonoBehaviour
     public Text reputationText;
 
     [SerializeField]
-    float multiplierFactor = 10f;
+    float multiplierFactor = 100f;
     const float positiveReputationThreshold = 0.5f;
 
     void Start()
@@ -24,11 +24,14 @@ public class Reputation : MonoBehaviour
         float petCooldown = pet.CdwToStay;
         float reputationDelta = CalculateReputationDelta(petHappiness, petCooldown);
         UpdateReputationField(reputationDelta);
-        Debug.Log("UPDATING REPUTATION " + _reputation);
     }
 
     private float CalculateReputationDelta(float happiness, float cooldown){
-        return (happiness-positiveReputationThreshold) * cooldown * multiplierFactor;
+        float factor = 1;
+        if(happiness-positiveReputationThreshold <= 0){
+            factor = -1;
+        }
+        return factor * happiness * multiplierFactor;
     }
 
     void UpdateReputationField(float reputationDelta){
