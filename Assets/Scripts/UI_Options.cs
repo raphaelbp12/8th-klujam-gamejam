@@ -41,8 +41,13 @@ public class UI_Options : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _panelOptions.SetActive(!_panelOptions.activeSelf);
+            ToggleOptions();
         }
+    }
+
+    public void ToggleOptions()
+    {
+        _panelOptions.SetActive(!_panelOptions.activeSelf);
     }
 
     private void InitalizeVolume()
