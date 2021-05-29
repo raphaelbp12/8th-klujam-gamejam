@@ -7,7 +7,9 @@ using System;
 
 public class ButtonHandler : MonoBehaviour, IPointerClickHandler
 {
-    public Action ClickFunc = null;
+    public Action<int> ClickFunc = null;
+
+    public int indice = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class ButtonHandler : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            ClickFunc();
+            ClickFunc(indice);
         }
     }
 }

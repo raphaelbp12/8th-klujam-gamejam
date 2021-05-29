@@ -1,28 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Inventory
 {
-    private List<Card> cards;
+    [SerializeField]
+    public List<CardSlot> _cardSlot;
+    public List<CardSlot> CardsSlot { get { return _cardSlot; } set { _cardSlot = value; } }
 
     public Inventory()
     {
-        cards = new List<Card>();
-
-        AddCard(new Card { cardType = Card.CardType.Food });
-        AddCard(new Card { cardType = Card.CardType.Shower });
-        AddCard(new Card { cardType = Card.CardType.Medicin });
-        AddCard(new Card { cardType = Card.CardType.Play });
+        CardsSlot = new List<CardSlot>();
     }
 
-    public void AddCard(Card card)
-    {
-        cards.Add(card);
-    }
-
-    public List<Card> GetCardList()
-    {
-        return cards;
-    }
 }

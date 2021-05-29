@@ -1,15 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameRules : MonoBehaviour
 {
-    [SerializeField] private UI_Inventory uiInventory;
-    private RectTransform selectedItemSlotRectTransform;
+    public List<Card> initalCards;
 
+    [SerializeField]
+    private UI_Inventory uiInventory;
+
+    //private RectTransform selectedItemSlotRectTransform;
+    [SerializeField]
     private Inventory inventory;
+    //public int SelectedCardIndex = -1;
 
-    public int SelectedCardIndex = -1;
+
+    private CardSlot selectedSlot = null;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +25,26 @@ public class GameRules : MonoBehaviour
         uiInventory.SetInventory(inventory);
     }
 
-    public void SelectCard(int selectedCard)
+    internal void AddCardToInventory(CardSlot cardSlot)
     {
-        SelectedCardIndex = selectedCard;
+        inventory.CardsSlot.Add(cardSlot);
     }
 
-    public void SelectCard(RectTransform itemSlotRectTransform)
+    public void SelectCard(CardSlot selectedSlot)
     {
-        selectedItemSlotRectTransform = itemSlotRectTransform;
+        this.selectedSlot = selectedSlot;
+
+        print($"A carta {selectedSlot.scriptableCard.name} foi selecionada!");
+        foreach (var cardSlot in inventory.CardsSlot)
+        {
+            if (cardSlot.gameObject.GetInstanceID() == selectedSlot.gameObject.GetInstanceID()) continue;
+
+            cardSlot.UnselectCard();
+        }
+    }
+
+    internal void RemoveFromInventory(CardSlot cardSlot)
+    {
+        inventory.CardsSlot.Remove(cardSlot);
     }
 }
