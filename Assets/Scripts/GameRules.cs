@@ -3,20 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameRules : MonoBehaviour
 {
     [SerializeField]
     private UI_Inventory uiInventory;
-
-
     [SerializeField]
     public List<Card> scriptableCardList = new List<Card>();
+
+    [SerializeField]
+    private GameObject youLoseScreen;
+    [SerializeField]
+    private GameObject youWinScreen;
 
     public int selectedSlotIndex { get; private set; } = -1;
 
     public Inventory inventory;
-
+    
     private void Awake()
     {
         inventory = new Inventory(scriptableCardList, uiInventory);
@@ -58,5 +62,22 @@ public class GameRules : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void GameOver(bool win)
+    {
+        if (win)
+        {
+            youWinScreen.SetActive(true);
+        }
+        else
+        {
+            youLoseScreen.SetActive(true);
+        }
+    }
+
+    public void OnPLayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
