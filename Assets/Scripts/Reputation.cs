@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Reputation : MonoBehaviour
 {
+    
+    [SerializeField]
+    float multiplierFactor = 10f;
+    [SerializeField]
+    float positiveReputationThreshold = 0.5f;
     float _reputation;
     public Text reputationText;
 
-    [SerializeField]
-    float multiplierFactor = 10f;
-    const float positiveReputationThreshold = 0.5f;
+    [Header("Events")]
+    public OnGameOver onGameOver;
 
     void Start()
     {
@@ -24,7 +29,6 @@ public class Reputation : MonoBehaviour
         float petCooldown = pet.CdwToStay;
         float reputationDelta = CalculateReputationDelta(petHappiness, petCooldown);
         UpdateReputationField(reputationDelta);
-        Debug.Log("UPDATING REPUTATION " + _reputation);
     }
 
     private float CalculateReputationDelta(float happiness, float cooldown){
@@ -33,7 +37,17 @@ public class Reputation : MonoBehaviour
 
     void UpdateReputationField(float reputationDelta){
         _reputation += reputationDelta;
-        reputationText.text = String.Format("Reputation:   {0}", getReputationNote());
+        string reputationNote = getReputationNote();
+        reputationText.text = String.Format("Reputation:   {0}", reputationNote);
+
+        if(onGameOver != null){            
+            if(reputationNote == "F"){
+                onGameOver.Invoke(false);
+            }
+            else if(reputationNote == "S +"){
+                onGameOver.Invoke(true);
+            }
+        }
     }
 
     string getReputationNote(){
@@ -51,7 +65,10 @@ public class Reputation : MonoBehaviour
         else if(_reputation >= 550 && _reputation < 600){ return "A +"; }
         else if(_reputation >= 600 && _reputation < 650){ return "S -"; }
         else if(_reputation >= 650 && _reputation < 700){ return "S"; }
-        else{ return "S+"; }
+        else{ return "S +"; }
     }
 
 }
+
+[Serializable]
+public class OnGameOver : UnityEvent<bool> { }

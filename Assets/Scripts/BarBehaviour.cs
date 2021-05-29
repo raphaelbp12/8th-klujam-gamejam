@@ -10,8 +10,6 @@ public class BarBehaviour : MonoBehaviour
     [SerializeField]
     Image icon;
 
-    // public Sprite m_Sprite;
-
     public void UpdateBarValue(float addValue){
         float newSliderValue = slider.value + addValue;
         if(newSliderValue < 0){
