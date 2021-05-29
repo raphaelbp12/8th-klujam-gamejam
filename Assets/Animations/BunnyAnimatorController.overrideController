@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BunnyAnimatorController
+  m_Controller: {fileID: 9100000, guid: b63ce65a09a147b43872bb33c3141253, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0ef47b12e85327f479b77e41e969ffdf, type: 2}
+    m_OverrideClip: {fileID: -8544982944672715099, guid: f35e6ceab0099c64d95fe903d27b2b97, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 2d1adbd9e352adf489f53d0a5564d65f, type: 2}
+    m_OverrideClip: {fileID: -8945691123924629249, guid: f35e6ceab0099c64d95fe903d27b2b97, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 5502382b35cd23642bc90c7922cb3d27, type: 2}
+    m_OverrideClip: {fileID: -7235932175846496021, guid: f35e6ceab0099c64d95fe903d27b2b97, type: 3}

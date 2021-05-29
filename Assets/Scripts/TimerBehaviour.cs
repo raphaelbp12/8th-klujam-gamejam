@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class TimerBehaviour : BarBehaviour
 {
+    [SerializeField]
+    float decreaseSpeed = 0.5f;
 
     void Update()
     {
-        UpdateBarValue(-Time.deltaTime);
+        UpdateBarValue(-Time.deltaTime * decreaseSpeed);
     }
 }

@@ -18,7 +18,18 @@ ModelImporter:
   - first:
       74: -7235932175846496021
     second: Dolphin@Sad
-  externalObjects: {}
+  - first:
+      74: -8945691123924629249
+    second: Armature|Idle
+  - first:
+      74: -3808552795534273223
+    second: Dolphin@Idle
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default OBJ
+    second: {fileID: 2100000, guid: 1cf27c4a9247d534683ff9861771f621, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -47,18 +58,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Dolphin@Happy
-      takeName: Armature|Happy
+      name: Armature|Idle
+      takeName: Armature|Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 109
+      lastFrame: 78
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
