@@ -187,6 +187,10 @@ public class Pet : MonoBehaviour
         _cooldownIncreased = 0;
     }
 
+    public float GetHappiness(){
+        return _happiness;
+    }
+
     class Need
     {
         public Card.CardType NeedType { get; set; }

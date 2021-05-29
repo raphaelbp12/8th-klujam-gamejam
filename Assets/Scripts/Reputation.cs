@@ -14,17 +14,21 @@ public class Reputation : MonoBehaviour
         _reputation = 0;
     }
 
-    float _time;
-    void Update()
-    {
-        _time += Time.deltaTime/10;
-        UpdateReputation(_time);
+    public void UpdateReputation(GameObject gameObject){
+        Pet pet = gameObject.GetComponent<Pet>();
+        float petHappiness = pet.GetHappiness();
+        float petCooldown = pet.CdwToStay;
+        float reputationDelta = CalculateReputationDelta(petHappiness, petCooldown);
+        UpdateReputationField(reputationDelta);
     }
 
-    void UpdateReputation(float reputationDelta){
+    private float CalculateReputationDelta(float happiness, float cooldown){
+        return happiness * cooldown * 0.1;
+    }
+
+    void UpdateReputationField(float reputationDelta){
         _reputation += reputationDelta;
         reputationText.text = String.Format("Reputation:   {0}", getReputationNote());
-        Debug.Log(_reputation);
     }
 
     string getReputationNote(){
