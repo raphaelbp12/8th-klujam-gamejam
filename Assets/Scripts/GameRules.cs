@@ -34,7 +34,7 @@ public class GameRules : MonoBehaviour
         if (petSelected == null || selectedSlotIndex < 0) return;
 
         Card selectedCard = inventory.GetCardInSlot(selectedSlotIndex);
-        bool isValidCard = petSelected.GetCard(selectedCard);
+        bool isValidCard = petSelected.UseCard(selectedCard);
 
         if (!isValidCard) return;
 

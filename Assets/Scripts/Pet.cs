@@ -103,7 +103,7 @@ public class Pet : MonoBehaviour
         _happiness = _needs.Sum(e => e.Happiness) / (_needs.Count() * _maxNeedIndex);
     }
 
-    public bool GetCard(Card card)
+    public bool UseCard(Card card)
     {
         if (_currentNeed == null) return false;
 
