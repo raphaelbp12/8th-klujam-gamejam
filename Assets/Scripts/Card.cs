@@ -7,6 +7,7 @@ public class Card : ScriptableObject
 {
     public enum CardType
     {
+        Empty,
         Food,
         Shower,
         Play,
@@ -20,15 +21,4 @@ public class Card : ScriptableObject
 
     public CardType Type => _type;
     public Sprite Sprite => _sprite;
-
-    //public Sprite GetSprite()
-    //{
-    //    switch (Type) {
-    //        default:
-    //        case CardType.Food:     return CardAssets.Instance.foodCardSprite;
-    //        case CardType.Shower:   return CardAssets.Instance.showerCardSprite;
-    //        case CardType.Play:     return CardAssets.Instance.playCardSprite;
-    //        case CardType.Medicin:  return CardAssets.Instance.medicinCardSprite;
-    //    }
-    //}
 }

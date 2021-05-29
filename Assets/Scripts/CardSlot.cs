@@ -19,34 +19,31 @@ public class CardSlot : MonoBehaviour
     {
         button = this.GetComponent<Button>();
         button.onClick.AddListener(OnClick);
+        gameRules = GameObject.FindObjectOfType<GameRules>();
     }
 
-    private void Start()
+    private void Update()
     {
-        gameRules = GameObject.FindObjectOfType<GameRules>();
-        gameRules.AddCardToInventory(this);
+        int instanceId = gameObject.GetInstanceID();
+
+        if (gameRules.selectedSlotInstanceId == instanceId)
+        {
+            backGroudImage.color = Color.cyan;
+        }
+        else
+        {
+            backGroudImage.color = Color.white;
+        }
     }
 
     public void SetCardAttributes(Card card)
     {
         scriptableCard = card;
-
         cardImage.sprite = card.Sprite;
     }
 
     public void OnClick()
     {
-        gameRules.SelectCard(this);
-        backGroudImage.color = Color.black;
+        gameRules.SelectCard(gameObject.GetInstanceID());
     }
-    public void OnDestroy()
-    {
-        gameRules.RemoveFromInventory(this);
-    }
-
-    public void UnselectCard()
-    {
-        backGroudImage.color = Color.white;
-    }
-
 }

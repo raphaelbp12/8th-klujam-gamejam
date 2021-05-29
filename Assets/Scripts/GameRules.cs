@@ -1,50 +1,46 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameRules : MonoBehaviour
 {
-    public List<Card> initalCards;
-
     [SerializeField]
     private UI_Inventory uiInventory;
 
-    //private RectTransform selectedItemSlotRectTransform;
-    [SerializeField]
-    private Inventory inventory;
-    //public int SelectedCardIndex = -1;
+    public int selectedSlotInstanceId { get; private set; }
 
+    public Inventory inventory;
 
-    private CardSlot selectedSlot = null;
+    private void Awake()
+    {
+        Card[] allCardTypes = GetAllInstances<Card>(); // get all scriptable objects
+        inventory = new Inventory(allCardTypes);
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+        uiInventory.InitInventoryItems();
     }
 
-    internal void AddCardToInventory(CardSlot cardSlot)
+    public void SelectCard(int instanceId)
     {
-        inventory.CardsSlot.Add(cardSlot);
+        this.selectedSlotInstanceId = instanceId;
+        uiInventory.RefreshInventoryItems();
     }
 
-    public void SelectCard(CardSlot selectedSlot)
+    public static T[] GetAllInstances<T>() where T : ScriptableObject
     {
-        this.selectedSlot = selectedSlot;
-
-        print($"A carta {selectedSlot.scriptableCard.name} foi selecionada!");
-        foreach (var cardSlot in inventory.CardsSlot)
+        string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name);  //FindAssets uses tags check documentation for more info
+        T[] a = new T[guids.Length];
+        for (int i = 0; i < guids.Length; i++)         //probably could get optimized 
         {
-            if (cardSlot.gameObject.GetInstanceID() == selectedSlot.gameObject.GetInstanceID()) continue;
-
-            cardSlot.UnselectCard();
+            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+            a[i] = AssetDatabase.LoadAssetAtPath<T>(path);
         }
-    }
 
-    internal void RemoveFromInventory(CardSlot cardSlot)
-    {
-        inventory.CardsSlot.Remove(cardSlot);
+        return a;
+
     }
 }

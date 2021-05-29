@@ -1,18 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
-[Serializable]
 public class Inventory
 {
-    [SerializeField]
-    public List<CardSlot> _cardSlot;
-    public List<CardSlot> CardsSlot { get { return _cardSlot; } set { _cardSlot = value; } }
+    public int numOfCards = 4;
 
-    public Inventory()
+    public List<Card> cardList = new List<Card>();
+
+    private List<Card> _cardTypes;
+
+    public Inventory(Card[] allCardTypes)
     {
-        CardsSlot = new List<CardSlot>();
+        _cardTypes = allCardTypes.ToList();
+
+        for (int i = 0; i < numOfCards; i++)
+        {
+            cardList.Add(GetRandomCardType());
+        }
     }
 
+    private Card GetRandomCardType()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, _cardTypes.Count);
+        return _cardTypes[randomIndex];
+    }
 }
