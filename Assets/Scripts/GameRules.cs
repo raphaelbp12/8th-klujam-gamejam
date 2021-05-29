@@ -30,6 +30,16 @@ public class GameRules : MonoBehaviour
         this.selectedSlotIndex = index;
     }
 
+    public void SelectPet(Pet petSelected)
+    {
+        if (petSelected == null || selectedSlotIndex < 0) return;
+
+        Card selectedCard = inventory.GetCardInSlot(selectedSlotIndex);
+        petSelected.GetCard(selectedCard);
+        inventory.ChangeCardOnSlot(selectedSlotIndex);
+        this.selectedSlotIndex = -1;
+    }
+
     public static T[] GetAllInstances<T>() where T : ScriptableObject
     {
         string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name);  //FindAssets uses tags check documentation for more info

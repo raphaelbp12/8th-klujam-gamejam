@@ -93,10 +93,8 @@ public class Pet : MonoBehaviour
 
     public void GetCard(Card card)
     {
+        print($"Pet {gameObject.name} GetCard {card.name}");
         if (_currentNeed == null) return;
-
-
-
     }
 
     class Need

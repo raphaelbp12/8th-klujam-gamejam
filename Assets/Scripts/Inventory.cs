@@ -31,6 +31,12 @@ public class Inventory
         uiInventory.InitInventoryItems();
     }
 
+    public Card GetCardInSlot(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex > cardList.Count - 1) return null;
+        return cardList[slotIndex];
+    }
+
     public void ChangeCardOnSlot(int slotIndex)
     {
         if (slotIndex < 0 || slotIndex > cardList.Count - 1) return;
