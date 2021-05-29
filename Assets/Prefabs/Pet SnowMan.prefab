@@ -28,7 +28,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: _cdwToStay
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: _weigthToSpawn
@@ -76,7 +76,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 895284751098505600, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_Name
-      value: Pet Pinky
+      value: Pet SnowMan
       objectReference: {fileID: 0}
     - target: {fileID: 895284751098505601, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_RootOrder

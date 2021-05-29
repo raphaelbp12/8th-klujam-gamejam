@@ -128,26 +128,6 @@ public class Pet : MonoBehaviour
 
         float effectAmount = 30f;
 
-        switch (card.Type)
-        {
-            case Card.CardType.Empty:
-                break;
-            case Card.CardType.Food:
-                _cooldownIncreased += 10;
-                break;
-            case Card.CardType.Shower:
-                break;
-            case Card.CardType.Play:
-                break;
-            case Card.CardType.Medicine:
-                break;
-            case Card.CardType.Time:
-                _cooldownIncreased += 5;
-                break;
-            default:
-                break;
-        }
-
         if (!isValidCard)
         {
             _audioManager.PlayBadCard();
