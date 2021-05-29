@@ -159,7 +159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2672520264803505281}
-  - component: {fileID: 2672520264803505282}
   - component: {fileID: 5082987171623062961}
   - component: {fileID: 1124209127735234256}
   m_Layer: 0
@@ -190,19 +189,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2672520264803505282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2672520264803505280}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a9ed0a76debc1499f43f7156c6c236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indice: 0
 --- !u!114 &5082987171623062961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardImage: {fileID: 2672520264623103328}
   backGroudImage: {fileID: 2672520263989382833}
+  scriptableCard: {fileID: 0}
 --- !u!114 &1124209127735234256
 MonoBehaviour:
   m_ObjectHideFlags: 0

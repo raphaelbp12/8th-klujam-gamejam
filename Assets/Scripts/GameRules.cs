@@ -26,7 +26,6 @@ public class GameRules : MonoBehaviour
 
     public void SelectCard(int index)
     {
-        inventory.ChangeCardOnSlot(selectedSlotIndex);
         this.selectedSlotIndex = index;
     }
 
@@ -35,7 +34,10 @@ public class GameRules : MonoBehaviour
         if (petSelected == null || selectedSlotIndex < 0) return;
 
         Card selectedCard = inventory.GetCardInSlot(selectedSlotIndex);
-        petSelected.GetCard(selectedCard);
+        bool isValidCard = petSelected.GetCard(selectedCard);
+
+        if (!isValidCard) return;
+
         inventory.ChangeCardOnSlot(selectedSlotIndex);
         this.selectedSlotIndex = -1;
     }
@@ -52,5 +54,20 @@ public class GameRules : MonoBehaviour
 
         return a;
 
+    }
+
+    public static Sprite GetCardSprite(Card.CardType cardType)
+    {
+        Card[] allCards = GetAllInstances<Card>(); // get all scriptable objects
+
+        foreach (var card in allCards)
+        {
+            if (cardType == card.Type)
+            {
+                return card.Sprite;
+            }
+        }
+
+        return null;
     }
 }

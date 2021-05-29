@@ -46,7 +46,7 @@ public class Inventory
 
     private Card GetRandomCardType()
     {
-        int randomIndex = UnityEngine.Random.Range(0, _cardTypes.Count);
+        int randomIndex = UnityEngine.Random.Range(1, _cardTypes.Count); //skip the first card, the empty one
         return _cardTypes[randomIndex];
     }
 }

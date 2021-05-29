@@ -11,7 +11,8 @@ public class Card : ScriptableObject
         Food,
         Shower,
         Play,
-        Medicin
+        Medicine,
+        Time
     }
 
     [SerializeField]

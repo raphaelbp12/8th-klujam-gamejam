@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95c8366f549c0454399b2d04ba4f6787, type: 3}
-  m_Name: Card_Medicin
+  m_Name: Card_Time
   m_EditorClassIdentifier: 
-  _type: 4
-  _sprite: {fileID: 21300000, guid: 2fe4ecca79a34e54bbb308b99fb5cbb8, type: 3}
+  _type: 5
+  _sprite: {fileID: -3483574656620730349, guid: 0f140ae2b5580387683a72ca0dfc0e9f, type: 3}

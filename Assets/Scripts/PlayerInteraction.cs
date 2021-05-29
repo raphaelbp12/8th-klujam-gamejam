@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Pet? petTarget = CheckMouseHover.CheckPetHover();
+            Pet petTarget = CheckMouseHover.CheckPetHover();
 
             if (petTarget != null)
             {

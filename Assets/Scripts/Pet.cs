@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pet : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class Pet : MonoBehaviour
     [SerializeField]
     private float _minimumStartPercentage = 0.5f;
 
+    [Header("Config")]
+    [SerializeField]
+    private Image iconImage;
+
     public float CdwToStay => _cdwToStay;
     public int WeigthToSpawn => _weigthToSpawn;
 
@@ -33,6 +38,7 @@ public class Pet : MonoBehaviour
     {
         InitializeNeedList();
         _progressBar = this.GetComponentInChildren<BarBehaviour>();
+        CalculateNeed();
     }
 
     private void InitializeNeedList()
@@ -58,7 +64,7 @@ public class Pet : MonoBehaviour
                 new Need()
                 {
                     Happiness = UnityEngine.Random.Range(_maxNeedIndex*_minimumStartPercentage, _maxNeedIndex),
-                    NeedType = Card.CardType.Medicin
+                    NeedType = Card.CardType.Medicine
                 }
             }
             );
@@ -67,8 +73,6 @@ public class Pet : MonoBehaviour
     private void Update()
     {
         DecreaseHappinessOverTime();
-
-        CalculateNeed();
     }
 
     private void FixedUpdate()
@@ -78,7 +82,15 @@ public class Pet : MonoBehaviour
 
     private void CalculateNeed()
     {
-        _currentNeed = _needs.OrderBy(e => e.Happiness).First();
+        int randomIndex = UnityEngine.Random.Range(0, _needs.Count);
+        _currentNeed = _needs[randomIndex];
+
+        iconImage.sprite = GetNeedSprite(_currentNeed.NeedType);
+    }
+
+    private Sprite GetNeedSprite(Card.CardType cardType)
+    {
+        return GameRules.GetCardSprite(cardType);
     }
 
     private void DecreaseHappinessOverTime()
@@ -91,10 +103,36 @@ public class Pet : MonoBehaviour
         _happiness = _needs.Sum(e => e.Happiness) / (_needs.Count() * _maxNeedIndex);
     }
 
-    public void GetCard(Card card)
+    public bool GetCard(Card card)
     {
-        print($"Pet {gameObject.name} GetCard {card.name}");
-        if (_currentNeed == null) return;
+        if (_currentNeed == null) return false;
+
+        bool isValidCard = card.Type == Card.CardType.Time || card.Type == _currentNeed.NeedType;
+
+        if (!isValidCard) return false;
+
+        switch (card.Type)
+        {
+            case Card.CardType.Empty:
+                break;
+            case Card.CardType.Food:
+                _cdwToStay += 10;
+                break;
+            case Card.CardType.Shower:
+                break;
+            case Card.CardType.Play:
+                break;
+            case Card.CardType.Medicine:
+                break;
+            case Card.CardType.Time:
+                _cdwToStay += 5;
+                break;
+            default:
+                break;
+        }
+
+        if (card.Type != Card.CardType.Time) CalculateNeed();
+        return true;
     }
 
     class Need
