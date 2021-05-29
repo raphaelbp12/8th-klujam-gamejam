@@ -36,6 +36,14 @@ public class Pet : MonoBehaviour
     private BarBehaviour _progressBar;
     private Need _currentNeed;
 
+
+    private GameRules gameRules;
+
+    private void Awake()
+    {
+        gameRules = GameObject.FindObjectOfType<GameRules>();
+    }
+
     private void Start()
     {
         InitializeNeedList();
@@ -92,7 +100,7 @@ public class Pet : MonoBehaviour
 
     private Sprite GetNeedSprite(Card.CardType cardType)
     {
-        return GameRules.GetCardSprite(cardType);
+        return gameRules.GetCardSprite(cardType);
     }
 
     private void DecreaseHappinessOverTime()

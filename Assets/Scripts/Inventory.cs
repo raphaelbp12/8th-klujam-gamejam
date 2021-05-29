@@ -14,11 +14,11 @@ public class Inventory
     private List<Card> _cardTypes;
     private UI_Inventory uiInventory;
 
-    public Inventory(Card[] allCardTypes, UI_Inventory uiInventory)
+    public Inventory(List<Card> allCardTypes, UI_Inventory uiInventory)
     {
         this.uiInventory = uiInventory;
 
-        _cardTypes = allCardTypes.ToList();
+        _cardTypes = allCardTypes;
 
         for (int i = 0; i < numOfCards; i++)
         {

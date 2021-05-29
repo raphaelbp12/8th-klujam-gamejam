@@ -9,14 +9,17 @@ public class GameRules : MonoBehaviour
     [SerializeField]
     private UI_Inventory uiInventory;
 
+
+    [SerializeField]
+    public List<Card> scriptableCardList = new List<Card>();
+
     public int selectedSlotIndex { get; private set; } = -1;
 
     public Inventory inventory;
 
     private void Awake()
     {
-        Card[] allCardTypes = GetAllInstances<Card>(); // get all scriptable objects
-        inventory = new Inventory(allCardTypes, uiInventory);
+        inventory = new Inventory(scriptableCardList, uiInventory);
     }
 
     void Start()
@@ -42,23 +45,9 @@ public class GameRules : MonoBehaviour
         this.selectedSlotIndex = -1;
     }
 
-    public static T[] GetAllInstances<T>() where T : ScriptableObject
+    public Sprite GetCardSprite(Card.CardType cardType)
     {
-        string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name);  //FindAssets uses tags check documentation for more info
-        T[] a = new T[guids.Length];
-        for (int i = 0; i < guids.Length; i++)         //probably could get optimized 
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
-            a[i] = AssetDatabase.LoadAssetAtPath<T>(path);
-        }
-
-        return a;
-
-    }
-
-    public static Sprite GetCardSprite(Card.CardType cardType)
-    {
-        Card[] allCards = GetAllInstances<Card>(); // get all scriptable objects
+        var allCards = scriptableCardList; // get all scriptable objects
 
         foreach (var card in allCards)
         {
