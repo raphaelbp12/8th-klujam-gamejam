@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c8366f549c0454399b2d04ba4f6787, type: 3}
   m_Name: Card_Shower
   m_EditorClassIdentifier: 
-  _type: 1
+  _type: 2
   _sprite: {fileID: 21300000, guid: a25be1801b4b3fc4eaa5102612df8b36, type: 3}

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Inventory
 {
-    public int numOfCards = 4;
+    public int numOfCards = 7;
 
     public List<Card> cardList { get; private set; } = new List<Card>();
 
