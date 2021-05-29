@@ -95,9 +95,7 @@ public class Pet : MonoBehaviour
 
     private void CalculateNeed()
     {
-        int randomIndex = UnityEngine.Random.Range(0, _needs.Count);
-        _currentNeed = _needs[randomIndex];
-
+        _currentNeed = _needs.OrderBy(e => e.Happiness).First();
         iconImage.sprite = GetNeedSprite(_currentNeed.NeedType);
     }
 
@@ -110,7 +108,13 @@ public class Pet : MonoBehaviour
     {
         foreach (var need in _needs)
         {
-            need.Happiness -= Time.deltaTime;
+            if (need.Happiness - Time.deltaTime < 0)
+            {
+                need.Happiness = 0;
+            } else
+            {
+                need.Happiness -= Time.deltaTime;
+            }
         }
 
         _happiness = _needs.Sum(e => e.Happiness) / (_needs.Count() * _maxNeedIndex);
@@ -121,14 +125,6 @@ public class Pet : MonoBehaviour
         if (_currentNeed == null) return false;
 
         bool isValidCard = card.Type == Card.CardType.Time || card.Type == _currentNeed.NeedType;
-
-        if (!isValidCard)
-        {
-            InvalidCardUsed?.Invoke(card);
-        } else
-        {
-            ValidCardUsed?.Invoke(card);
-        }
 
         float effectAmount = 30f;
 
@@ -152,7 +148,16 @@ public class Pet : MonoBehaviour
                 break;
         }
 
-        UseCardEffect(card.Type, effectAmount);
+        if (!isValidCard)
+        {
+            InvalidCardUsed?.Invoke(card);
+            UseCardEffect(card.Type, -1 * effectAmount / 2);
+        }
+        else
+        {
+            ValidCardUsed?.Invoke(card);
+            UseCardEffect(card.Type, effectAmount);
+        }
         if (card.Type != Card.CardType.Time) CalculateNeed();
         return true;
     }
@@ -163,7 +168,16 @@ public class Pet : MonoBehaviour
         {
             if (need.NeedType == cardType)
             {
-                need.Happiness += amount;
+                if (need.Happiness + amount < 0)
+                {
+                    need.Happiness = 0;
+                } else if (need.Happiness + amount > _maxNeedIndex)
+                {
+                    need.Happiness = _maxNeedIndex;
+                } else
+                {
+                    need.Happiness += amount;
+                }
             }
         }
     }
