@@ -29,13 +29,12 @@ public class UI_Inventory : MonoBehaviour
 
     public void RefreshInventoryItems()
     {
-        CardSlot[] cardSlots = gameObject.GetComponents<CardSlot>();
+        CardSlot[] cardSlots = gameObject.GetComponentsInChildren<CardSlot>();
 
         for(int i = 0; i < cardSlots.Length; i++)
         {
             CardSlot cardSlot = cardSlots[i];
-
-            cardSlot.SetCardAttributes(gameRules.inventory.cardList[i]);
+            cardSlot.SetCardAttributes(gameRules.inventory.cardList[i], -1);
         }
     }
 }

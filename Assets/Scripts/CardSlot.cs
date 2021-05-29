@@ -35,12 +35,12 @@ public class CardSlot : MonoBehaviour
         }
     }
 
-    public void SetCardAttributes(Card card, int? index = null)
+    public void SetCardAttributes(Card card, int index)
     {
         scriptableCard = card;
         cardImage.sprite = card.Sprite;
 
-        if (index != null) slotIndex = index.Value;
+        if (index >= 0) slotIndex = index;
     }
 
     public void OnClick()

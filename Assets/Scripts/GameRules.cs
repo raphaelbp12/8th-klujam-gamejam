@@ -26,6 +26,7 @@ public class GameRules : MonoBehaviour
 
     public void SelectCard(int index)
     {
+        inventory.ChangeCardOnSlot(selectedSlotIndex);
         this.selectedSlotIndex = index;
     }
 
