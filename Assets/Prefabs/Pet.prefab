@@ -143,23 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cdwToStay: 2
   _weigthToSpawn: 1
-  _needs:
-  - name: Food
-    _type: 0
-    _cdwNeeding: 2
-    _weightToNeed: 2
-  - name: Shower
-    _type: 1
-    _cdwNeeding: 2
-    _weightToNeed: 2
-  - name: Play
-    _type: 2
-    _cdwNeeding: 2
-    _weightToNeed: 2
-  - name: Medicin
-    _type: 3
-    _cdwNeeding: 2
-    _weightToNeed: 2
 --- !u!1 &3619520532142999986
 GameObject:
   m_ObjectHideFlags: 0
