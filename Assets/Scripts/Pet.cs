@@ -30,6 +30,8 @@ public class Pet : MonoBehaviour
 
     private float _happiness;
 
+    public float _cooldownIncreased { get; private set; } = 0;
+
     private List<Need> _needs = new List<Need>();
     private BarBehaviour _progressBar;
     private Need _currentNeed;
@@ -116,7 +118,7 @@ public class Pet : MonoBehaviour
             case Card.CardType.Empty:
                 break;
             case Card.CardType.Food:
-                _cdwToStay += 10;
+                _cooldownIncreased += 10;
                 break;
             case Card.CardType.Shower:
                 break;
@@ -125,7 +127,7 @@ public class Pet : MonoBehaviour
             case Card.CardType.Medicine:
                 break;
             case Card.CardType.Time:
-                _cdwToStay += 5;
+                _cooldownIncreased += 5;
                 break;
             default:
                 break;
@@ -133,6 +135,11 @@ public class Pet : MonoBehaviour
 
         if (card.Type != Card.CardType.Time) CalculateNeed();
         return true;
+    }
+
+    public void ResetCooldownIncreased()
+    {
+        _cooldownIncreased = 0;
     }
 
     class Need
