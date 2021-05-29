@@ -11,7 +11,7 @@ public class Reputation : MonoBehaviour
     [SerializeField]
     float multiplierFactor = 10f;
     [SerializeField]
-    float positiveReputationThreshold = 0.5f;
+    float positiveReputationThreshold = 0.314159265359f;
     float _reputation;
     public Text reputationText;
 
@@ -20,7 +20,7 @@ public class Reputation : MonoBehaviour
 
     void Start()
     {
-        _reputation = 0;
+        _reputation = 380;
     }
 
     public void UpdateReputation(GameObject gameObject){
