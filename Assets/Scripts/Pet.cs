@@ -25,6 +25,9 @@ public class Pet : MonoBehaviour
     [SerializeField]
     private Image iconImage;
 
+    public event Action<Card> ValidCardUsed;
+    public event Action<Card> InvalidCardUsed;
+
     public float CdwToStay => _cdwToStay;
     public int WeigthToSpawn => _weigthToSpawn;
 
@@ -119,7 +122,13 @@ public class Pet : MonoBehaviour
 
         bool isValidCard = card.Type == Card.CardType.Time || card.Type == _currentNeed.NeedType;
 
-        if (!isValidCard) return false;
+        if (!isValidCard)
+        {
+            InvalidCardUsed?.Invoke(card);
+        } else
+        {
+            ValidCardUsed?.Invoke(card);
+        }
 
         float effectAmount = 30f;
 
