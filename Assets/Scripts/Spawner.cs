@@ -46,7 +46,16 @@ public class Spawner : MonoBehaviour
 
     IEnumerator RemoveProcess(SpawnInformation spawnInfo)
     {
-        yield return new WaitForSeconds(spawnInfo.Pet.CdwToStay);
+        float internalCdw = spawnInfo.Pet.CdwToStay;
+
+        while (internalCdw >= 0)
+        {
+            internalCdw -= Time.deltaTime;
+            //TODO: ChamarBarra
+            //Debug.Log(internalCdw / spawnInfo.Pet.CdwToStay);
+            yield return new WaitForFixedUpdate();
+        }
+
 
         if (onRemovePet != null)
             onRemovePet.Invoke(spawnInfo.CurrentGameObject);
@@ -82,7 +91,7 @@ public class SpawnInformation
         {
             int totalWeight = _prefabs.Sum(e => e.GetComponent<Pet>().WeigthToSpawn);
             int randomNumber = UnityEngine.Random.Range(1, totalWeight);
- 
+
             int count = 0;
             foreach (var prefab in _prefabs)
             {

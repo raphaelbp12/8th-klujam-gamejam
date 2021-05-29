@@ -12,82 +12,90 @@ public class Pet : MonoBehaviour
     [SerializeField]
     private int _weigthToSpawn = 1;
 
-    [Space]
-    [SerializeField]
-    private List<PetNeed> _needs;
+    //[Space]
+    //[SerializeField]
+    //private List<PetNeed> _needs;
 
     public float CdwToStay => _cdwToStay;
     public int WeigthToSpawn => _weigthToSpawn;
 
-    private Coroutine _needProcess = null;
+    private const float MAX_VALUE_NEED = 1f;
+
+    private float _happiness;
+
+    private List<Need> _needs = new List<Need>();
+
+    private Need _currentNeed;
 
     private void Start()
     {
-        StartNeedProcess();
+        _needs.AddRange(
+            new List<Need>()
+            {
+                new Need()
+                {
+                    Happiness = UnityEngine.Random.Range(0, MAX_VALUE_NEED),
+                    NeedType = Card.CardType.Food
+                },
+                new Need()
+                {
+                    Happiness = UnityEngine.Random.Range(0, MAX_VALUE_NEED),
+                    NeedType = Card.CardType.Shower
+                },
+                new Need()
+                {
+                    Happiness = UnityEngine.Random.Range(0, MAX_VALUE_NEED),
+                    NeedType = Card.CardType.Play
+                },
+                new Need()
+                {
+                    Happiness = UnityEngine.Random.Range(0, MAX_VALUE_NEED),
+                    NeedType = Card.CardType.Medicin
+                }
+            }
+            );
     }
 
-    private void OnValidate()
+    private void Update()
+    {
+        DecreaseHappinessOverTime();
+
+        CalculateNeed();
+    }
+
+    private void FixedUpdate()
+    {
+        //TODO: Chamar Barra
+    }
+
+    private void CalculateNeed()
+    {
+        _currentNeed = _needs.OrderBy(e => e.Happiness).First();
+
+        print($"I need  {_currentNeed.NeedType}");
+    }
+
+    private void DecreaseHappinessOverTime()
     {
         foreach (var need in _needs)
         {
-            need.name = need.Type.ToString();
+            need.Happiness -= Time.deltaTime;
         }
+
+        _happiness = _needs.Sum(e => e.Happiness) / (_needs.Count() * MAX_VALUE_NEED);
     }
 
     public void GetCard(Card card)
     {
+        if (_currentNeed == null) return;
+
+
 
     }
 
-    private PetNeed GetRandomNeed()
+    class Need
     {
-        int totalWeight = _needs.Sum(e => e.WeightToNeed);
-        int randomNumber = UnityEngine.Random.Range(1, totalWeight);
-
-        int count = 0;
-        foreach (var petNeed in _needs)
-        {
-            count += petNeed.WeightToNeed;
-            if (randomNumber <= count)
-            {
-                return petNeed;
-            }
-        }
-
-        return _needs.FirstOrDefault();
+        public Card.CardType NeedType { get; set; }
+        public float Happiness { get; set; }
     }
-
-    private void StartNeedProcess()
-    {
-        _needProcess = StartCoroutine(NeedProcess());
-    }
-
-    IEnumerator NeedProcess()
-    {
-        PetNeed need = GetRandomNeed();
-        print($"I({this.name}) need {need.Type}");
-        yield return new WaitForSeconds(need.CdwNeeding);
-
-        StartNeedProcess();
-    }
-
-}
-[Serializable]
-public class PetNeed
-{
-    [HideInInspector]
-    public string name;
-
-    [SerializeField]
-    private Card.CardType _type;
-    [SerializeField]
-    private float _cdwNeeding;
-    [SerializeField]
-    private int _weightToNeed;
-
-
-    public Card.CardType Type => _type;
-
-    public float CdwNeeding => _cdwNeeding;
-    public int WeightToNeed => _weightToNeed;
 }
