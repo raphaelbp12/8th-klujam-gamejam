@@ -9,6 +9,8 @@ public class GameRules : MonoBehaviour
 
     private Inventory inventory;
 
+    public int SelectedCardIndex = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +18,9 @@ public class GameRules : MonoBehaviour
         uiInventory.SetInventory(inventory);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectCard(int selectedCard)
     {
-        
+        SelectedCardIndex = selectedCard;
     }
 
     public void SelectCard(RectTransform itemSlotRectTransform)

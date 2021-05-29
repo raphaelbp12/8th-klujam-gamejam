@@ -24,7 +24,7 @@ public class ButtonHandler : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (ClickFunc != null) ClickFunc();
+            ClickFunc();
         }
     }
 }
