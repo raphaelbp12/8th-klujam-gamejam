@@ -18,11 +18,12 @@ public class UI_Inventory : MonoBehaviour
 
     public void InitInventoryItems()
     {
-        foreach (var card in gameRules.inventory.cardList)
+        for (int i = 0; i < gameRules.inventory.cardList.Count; i++)
         {
+            Card card = gameRules.inventory.cardList[i];
             GameObject cardGameObject = Instantiate(cardSlotPrefab, cardSlotContainer.transform);
             CardSlot cardSlot = cardGameObject.GetComponent<CardSlot>();
-            cardSlot.SetCardAttributes(card);
+            cardSlot.SetCardAttributes(card, i);
         }
     }
 

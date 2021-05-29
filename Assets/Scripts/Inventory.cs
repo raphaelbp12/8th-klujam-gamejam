@@ -9,18 +9,26 @@ public class Inventory
 {
     public int numOfCards = 4;
 
-    public List<Card> cardList = new List<Card>();
+    public List<Card> cardList { get; private set; } = new List<Card>();
 
     private List<Card> _cardTypes;
+    private UI_Inventory uiInventory;
 
-    public Inventory(Card[] allCardTypes)
+    public Inventory(Card[] allCardTypes, UI_Inventory uiInventory)
     {
+        this.uiInventory = uiInventory;
+
         _cardTypes = allCardTypes.ToList();
 
         for (int i = 0; i < numOfCards; i++)
         {
             cardList.Add(GetRandomCardType());
         }
+    }
+
+    public void Start()
+    {
+        uiInventory.InitInventoryItems();
     }
 
     private Card GetRandomCardType()

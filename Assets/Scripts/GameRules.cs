@@ -9,25 +9,24 @@ public class GameRules : MonoBehaviour
     [SerializeField]
     private UI_Inventory uiInventory;
 
-    public int selectedSlotInstanceId { get; private set; }
+    public int selectedSlotIndex { get; private set; } = -1;
 
     public Inventory inventory;
 
     private void Awake()
     {
         Card[] allCardTypes = GetAllInstances<Card>(); // get all scriptable objects
-        inventory = new Inventory(allCardTypes);
+        inventory = new Inventory(allCardTypes, uiInventory);
     }
 
     void Start()
     {
-        uiInventory.InitInventoryItems();
+        inventory.Start();
     }
 
-    public void SelectCard(int instanceId)
+    public void SelectCard(int index)
     {
-        this.selectedSlotInstanceId = instanceId;
-        uiInventory.RefreshInventoryItems();
+        this.selectedSlotIndex = index;
     }
 
     public static T[] GetAllInstances<T>() where T : ScriptableObject

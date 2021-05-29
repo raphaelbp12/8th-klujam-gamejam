@@ -13,6 +13,7 @@ public class CardSlot : MonoBehaviour
     public Card scriptableCard;
     private Button button;
     private GameRules gameRules;
+    private int slotIndex = -1;
 
 
     private void Awake()
@@ -24,9 +25,7 @@ public class CardSlot : MonoBehaviour
 
     private void Update()
     {
-        int instanceId = gameObject.GetInstanceID();
-
-        if (gameRules.selectedSlotInstanceId == instanceId)
+        if (gameRules.selectedSlotIndex == slotIndex)
         {
             backGroudImage.color = Color.cyan;
         }
@@ -36,14 +35,16 @@ public class CardSlot : MonoBehaviour
         }
     }
 
-    public void SetCardAttributes(Card card)
+    public void SetCardAttributes(Card card, int? index = null)
     {
         scriptableCard = card;
         cardImage.sprite = card.Sprite;
+
+        if (index != null) slotIndex = index.Value;
     }
 
     public void OnClick()
     {
-        gameRules.SelectCard(gameObject.GetInstanceID());
+        gameRules.SelectCard(slotIndex);
     }
 }
