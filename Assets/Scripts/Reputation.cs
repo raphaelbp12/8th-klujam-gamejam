@@ -21,6 +21,8 @@ public class Reputation : MonoBehaviour
     void Start()
     {
         _reputation = 380;
+        string reputationNote = getReputationNote();
+        reputationText.text = String.Format("Reputation:   {0}", reputationNote);
     }
 
     public void UpdateReputation(GameObject gameObject){
