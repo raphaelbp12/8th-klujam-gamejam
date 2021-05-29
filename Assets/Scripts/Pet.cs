@@ -9,7 +9,7 @@ public class Pet : MonoBehaviour
 {
     [Header("Spawn Configurations")]
     [SerializeField]
-    private float _cdwToStay = 2;
+    private float _cdwToStay = 5;
     [SerializeField]
     private int _weigthToSpawn = 1;
 
