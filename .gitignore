@@ -42,3 +42,5 @@ Thumbs.db
 [Bb]uild*/
 External Libraries/
 ProjectSettings/ProjectVersion.txt
+
+*.idea
