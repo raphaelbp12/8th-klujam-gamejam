@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8273070391001521448
+--- !u!1001 &7438160696395594412
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: _weigthToSpawn
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 895284750878106150, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_IsActive
@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 895284751098505600, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_Name
-      value: Pet Blue
+      value: Pet Bunny
       objectReference: {fileID: 0}
     - target: {fileID: 895284751098505601, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_RootOrder
@@ -67,7 +67,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8769818729188893608, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+    - target: {fileID: 3619520532142999986, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

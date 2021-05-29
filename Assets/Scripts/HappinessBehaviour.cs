@@ -15,16 +15,19 @@ public class HappinessBehaviour : BarBehaviour
     GradientColorKey[] colorKey;
     GradientAlphaKey[] alphaKey;
 
-    
+    private void OnValidate()
+    {
+        SetIcon(testNewSprite);
+    }
+
     void UpdateFillColor(){
         fillImage.color = gradient.Evaluate(slider.value/slider.maxValue);
     }    
 
     void Update() {
         // Just testing :)
-        UpdateBarValue(-Time.deltaTime);
+        //UpdateBarValue(-Time.deltaTime);
         UpdateFillColor();
-        setIcon(testNewSprite);
     }
 
 }

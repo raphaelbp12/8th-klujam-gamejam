@@ -24,11 +24,11 @@ public class BarBehaviour : MonoBehaviour
         slider.value = slider.maxValue;
     }
 
-    public void setBarValue(float value){
+    public void SetBarValue(float value){
         slider.value = value;
     }
 
-    public void setIcon(Sprite sprite){
+    public void SetIcon(Sprite sprite){
         icon.sprite = sprite;
     }
     

@@ -8,8 +8,44 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _cdwToStay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: _weigthToSpawn
-      value: 5
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[0]._cdwNeeding
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[1]._cdwNeeding
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[2]._cdwNeeding
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[3]._cdwNeeding
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[0]._weightToNeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[1]._weightToNeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[2]._weightToNeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1909789791416858236, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: _needs.Array.data[3]._weightToNeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 895284751098505600, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_Name
@@ -60,6 +96,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3619520532142999986, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769818729188893608, guid: 0d1df29d2c1d2a2468c5599efecd92a8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
