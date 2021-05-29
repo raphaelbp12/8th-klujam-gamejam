@@ -113,6 +113,8 @@ public class Pet : MonoBehaviour
 
         if (!isValidCard) return false;
 
+        float effectAmount = 30f;
+
         switch (card.Type)
         {
             case Card.CardType.Empty:
@@ -133,8 +135,20 @@ public class Pet : MonoBehaviour
                 break;
         }
 
+        UseCardEffect(card.Type, effectAmount);
         if (card.Type != Card.CardType.Time) CalculateNeed();
         return true;
+    }
+
+    private void UseCardEffect(Card.CardType cardType, float amount)
+    {
+        foreach (var need in _needs)
+        {
+            if (need.NeedType == cardType)
+            {
+                need.Happiness += amount;
+            }
+        }
     }
 
     public void ResetCooldownIncreased()
