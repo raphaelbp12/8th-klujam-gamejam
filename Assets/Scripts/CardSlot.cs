@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardSlot : MonoBehaviour
+public class CardSlot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private Image cardImage;
@@ -17,10 +18,12 @@ public class CardSlot : MonoBehaviour
 
     private AudioManager audioManager;
 
+    private bool canChangeCard = true;
+    private float changeCardCooldownTime = 10f;
+
     private void Awake()
     {
         button = this.GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
         gameRules = GameObject.FindObjectOfType<GameRules>();
         audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
@@ -30,6 +33,10 @@ public class CardSlot : MonoBehaviour
         if (gameRules.selectedSlotIndex == slotIndex)
         {
             backGroudImage.color = Color.cyan;
+        }
+        else if (!canChangeCard)
+        {
+            backGroudImage.color = Color.red;
         }
         else
         {
@@ -45,9 +52,27 @@ public class CardSlot : MonoBehaviour
         if (index >= 0) slotIndex = index;
     }
 
-    public void OnClick()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        audioManager.PlaySelectCard();
-        gameRules.SelectCard(slotIndex);
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            audioManager.PlaySelectCard();
+            gameRules.SelectCard(slotIndex);
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (!canChangeCard) return;
+
+            gameRules.inventory.ChangeCardOnSlot(slotIndex);
+            audioManager.PlaySelectCard();
+            canChangeCard = false;
+            StartCoroutine(UnlockChangeCard());
+        }
+    }
+
+    IEnumerator UnlockChangeCard()
+    {
+        yield return new WaitForSeconds(changeCardCooldownTime);
+        canChangeCard = true;
     }
 }
