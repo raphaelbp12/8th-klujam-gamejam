@@ -51,7 +51,12 @@ public class Spawner : MonoBehaviour
         while (internalCdw >= 0)
         {
             internalCdw -= Time.deltaTime;
+
+            float cooldownIncreased = spawnInfo.Pet._cooldownIncreased;
+            internalCdw += cooldownIncreased;
+
             spawnInfo.ProgressBar.SetBarValue(internalCdw / spawnInfo.Pet.CdwToStay);
+            spawnInfo.Pet.ResetCooldownIncreased();
             yield return new WaitForFixedUpdate();
         }
 
