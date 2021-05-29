@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UI_Inventory : MonoBehaviour
@@ -8,8 +9,8 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] Transform cardSlotContainer;
     [SerializeField] GameObject cardSlotPrefab;
 
-    private GameRules gameRules;
 
+    private GameRules gameRules;
 
     private void Awake()
     {

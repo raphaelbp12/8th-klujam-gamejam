@@ -38,13 +38,13 @@ public class Pet : MonoBehaviour
     private List<Need> _needs = new List<Need>();
     private BarBehaviour _progressBar;
     private Need _currentNeed;
-
-
+    private AudioManager _audioManager;
     private GameRules gameRules;
 
     private void Awake()
     {
         gameRules = GameObject.FindObjectOfType<GameRules>();
+        _audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     private void Start()
@@ -150,11 +150,13 @@ public class Pet : MonoBehaviour
 
         if (!isValidCard)
         {
+            _audioManager.PlayBadCard();
             InvalidCardUsed?.Invoke(card);
             UseCardEffect(card.Type, -1 * effectAmount / 2);
         }
         else
         {
+            _audioManager.PlayGoodCard();
             ValidCardUsed?.Invoke(card);
             UseCardEffect(card.Type, effectAmount);
         }

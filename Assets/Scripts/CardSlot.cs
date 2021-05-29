@@ -15,12 +15,14 @@ public class CardSlot : MonoBehaviour
     private GameRules gameRules;
     private int slotIndex = -1;
 
+    private AudioManager audioManager;
 
     private void Awake()
     {
         button = this.GetComponent<Button>();
         button.onClick.AddListener(OnClick);
         gameRules = GameObject.FindObjectOfType<GameRules>();
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     private void Update()
@@ -45,6 +47,7 @@ public class CardSlot : MonoBehaviour
 
     public void OnClick()
     {
+        audioManager.PlaySelectCard();
         gameRules.SelectCard(slotIndex);
     }
 }
