@@ -5,48 +5,36 @@ using UnityEngine.UI;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private Inventory inventory;
     [SerializeField] Transform cardSlotContainer;
-    [SerializeField] Transform cardSlotTemplate;
+    [SerializeField] GameObject cardSlotPrefab;
 
     private GameRules gameRules;
 
-    private void Start()
+
+    private void Awake()
     {
         gameRules = GameObject.FindObjectOfType<GameRules>();
     }
 
-    public void SetInventory(Inventory inventory)
+    public void InitInventoryItems()
     {
-        this.inventory = inventory;
-        RefreshInventoryItems();
+        for (int i = 0; i < gameRules.inventory.cardList.Count; i++)
+        {
+            Card card = gameRules.inventory.cardList[i];
+            GameObject cardGameObject = Instantiate(cardSlotPrefab, cardSlotContainer.transform);
+            CardSlot cardSlot = cardGameObject.GetComponent<CardSlot>();
+            cardSlot.SetCardAttributes(card, i);
+        }
     }
 
-    private void RefreshInventoryItems()
+    public void RefreshInventoryItems()
     {
-        int x = 0;
-        int y = 0;
-        float itemSlotCellSize = 110f;
+        CardSlot[] cardSlots = gameObject.GetComponentsInChildren<CardSlot>();
 
-        foreach(Card card in inventory.GetCardList())
+        for(int i = 0; i < cardSlots.Length; i++)
         {
-            RectTransform itemSlotRectTransform = Instantiate(cardSlotTemplate, cardSlotContainer).GetComponent<RectTransform>();
-            itemSlotRectTransform.gameObject.SetActive(true);
-
-            itemSlotRectTransform.GetComponent<ButtonHandler>().ClickFunc = () =>
-            {
-                gameRules.SelectCard(itemSlotRectTransform);
-            };
-
-            itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
-            Image image = itemSlotRectTransform.Find("CardImage").GetComponent<Image>();
-            image.sprite = card.GetSprite();
-            x++;
-            if (x > 4)
-            {
-                x = 0;
-                y++;
-            }
+            CardSlot cardSlot = cardSlots[i];
+            cardSlot.SetCardAttributes(gameRules.inventory.cardList[i], -1);
         }
     }
 }
