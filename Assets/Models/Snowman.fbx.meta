@@ -8,13 +8,13 @@ ModelImporter:
     second: Armature.001|?
   - first:
       74: -4682869043696744407
-    second: Armature.001|Happy
+    second: Snowman@Happy
   - first:
       74: 4699274299699868179
-    second: Armature.001|Idle
+    second: Snowman@Idle
   - first:
       74: -772314898428950371
-    second: Armature.001|Sad
+    second: Snowman@Sad
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -49,7 +49,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.001|Happy
+      name: Snowman@Happy
       takeName: Armature.001|Happy
       internalID: 0
       firstFrame: 0
@@ -78,7 +78,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|Sad
+      name: Snowman@Sad
       takeName: Armature.001|Sad
       internalID: 0
       firstFrame: 0
@@ -107,7 +107,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|Idle
+      name: Snowman@Idle
       takeName: Armature.001|Idle
       internalID: 0
       firstFrame: 0
@@ -118,7 +118,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
