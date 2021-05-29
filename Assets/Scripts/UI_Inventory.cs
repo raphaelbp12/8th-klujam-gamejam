@@ -9,7 +9,6 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] Transform cardSlotContainer;
     [SerializeField] GameObject cardSlotPrefab;
 
-
     private GameRules gameRules;
 
     private void Awake()
