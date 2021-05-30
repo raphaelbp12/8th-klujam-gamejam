@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Card_Food
   m_EditorClassIdentifier: 
   _type: 1
-  _sprite: {fileID: 21300000, guid: ff4d122ea01f0c74490166ffc0992e63, type: 3}
+  _sprite: {fileID: 21300000, guid: c5034f30ab8fb4243be285de5645bc4d, type: 3}
