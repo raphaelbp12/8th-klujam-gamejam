@@ -49,7 +49,7 @@ Canvas:
   m_GameObject: {fileID: 1441792341052585678}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1441792341052585677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,11 +134,11 @@ RectTransform:
   m_Father: {fileID: 1441792341052585666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -16}
-  m_SizeDelta: {x: 205.89, y: 22.7343}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1441792341052937641
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -174,13 +174,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Reputation:   E
+  m_Text: 'Reputation: E
 
 '
 --- !u!114 &1441792341052937640
@@ -195,7 +195,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a59d30d6491b2818a2ba9121855a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiplierFactor: 10
+  positiveReputationThreshold: 0.31415927
   reputationText: {fileID: 1441792341052937642}
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1441792341245525230
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +236,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0.000030517578, y: 0}
-  m_SizeDelta: {x: 215.8876, y: 64.11359}
+  m_SizeDelta: {x: 252, y: 59.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1441792341245525219
 CanvasRenderer:
@@ -261,8 +266,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 67773b741d3fbcaea93935c910d7cce5, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: e5688b114004af24596b37259bd11aa0, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -270,4 +275,4 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 8.59

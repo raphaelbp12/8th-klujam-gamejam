@@ -22,7 +22,7 @@ public class Reputation : MonoBehaviour
     {
         _reputation = 380;
         string reputationNote = getReputationNote();
-        reputationText.text = String.Format("Reputation:   {0}", reputationNote);
+        reputationText.text = String.Format("Reputation: {0}", reputationNote);
     }
 
     public void UpdateReputation(GameObject gameObject){
@@ -40,7 +40,7 @@ public class Reputation : MonoBehaviour
     void UpdateReputationField(float reputationDelta){
         _reputation += reputationDelta;
         string reputationNote = getReputationNote();
-        reputationText.text = String.Format("Reputation:   {0}", reputationNote);
+        reputationText.text = String.Format("Reputation: {0}", reputationNote);
 
         if(onGameOver != null){            
             if(reputationNote == "F"){
