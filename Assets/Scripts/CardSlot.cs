@@ -36,7 +36,7 @@ public class CardSlot : MonoBehaviour, IPointerClickHandler
         }
         else if (!canChangeCard)
         {
-            backGroudImage.color = Color.red;
+            backGroudImage.color = Color.grey;
         }
         else
         {

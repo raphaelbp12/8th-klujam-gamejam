@@ -170,7 +170,7 @@ public class Pet : MonoBehaviour
     }
 
     public float GetHappiness(){
-        return _happiness/_maxNeedIndex;
+        return _happiness;
     }
 
     class Need

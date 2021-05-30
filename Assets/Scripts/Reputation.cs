@@ -29,12 +29,12 @@ public class Reputation : MonoBehaviour
         Pet pet = gameObject.GetComponent<Pet>();
         float petHappiness = pet.GetHappiness();
         float petCooldown = pet.CdwToStay;
-        float reputationDelta = CalculateReputationDelta(petHappiness, petCooldown);
+        float reputationDelta = CalculateReputationDelta(petHappiness);
         UpdateReputationField(reputationDelta);
     }
 
-    private float CalculateReputationDelta(float happiness, float cooldown){
-        return (happiness-positiveReputationThreshold) * cooldown * multiplierFactor;
+    private float CalculateReputationDelta(float happiness){
+        return (happiness-positiveReputationThreshold) * multiplierFactor;
     }
 
     void UpdateReputationField(float reputationDelta){
