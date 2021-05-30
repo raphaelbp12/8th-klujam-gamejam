@@ -19,7 +19,7 @@ public class CardSlot : MonoBehaviour, IPointerClickHandler
     private AudioManager audioManager;
 
     private bool canChangeCard = true;
-    private float changeCardCooldownTime = 10f;
+    private float changeCardCooldownTime = 1f;
 
     private void Awake()
     {
@@ -54,6 +54,7 @@ public class CardSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!canChangeCard) return;
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             audioManager.PlaySelectCard();
@@ -61,8 +62,6 @@ public class CardSlot : MonoBehaviour, IPointerClickHandler
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (!canChangeCard) return;
-
             gameRules.inventory.ChangeCardOnSlot(slotIndex);
             audioManager.PlaySelectCard();
             canChangeCard = false;
