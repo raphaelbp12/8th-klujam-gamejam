@@ -854,7 +854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1441792341052937640, guid: 2775d36ffa29d6ba29062c6cb9aa0eab, type: 3}
       propertyPath: positiveReputationThreshold
-      value: 0.25
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1441792341052937640, guid: 2775d36ffa29d6ba29062c6cb9aa0eab, type: 3}
       propertyPath: onGameOver.m_PersistentCalls.m_Calls.Array.size

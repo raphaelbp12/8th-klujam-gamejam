@@ -108,12 +108,14 @@ public class Pet : MonoBehaviour
     {
         foreach (var need in _needs)
         {
-            if (need.Happiness - Time.deltaTime < 0)
+            float newHappiness = need.Happiness - (Time.deltaTime * 0.75f);
+
+            if (newHappiness < 0)
             {
                 need.Happiness = 0;
             } else
             {
-                need.Happiness -= Time.deltaTime;
+                need.Happiness = newHappiness;
             }
         }
 
@@ -132,7 +134,7 @@ public class Pet : MonoBehaviour
         {
             _audioManager.PlayBadCard();
             InvalidCardUsed?.Invoke(card);
-            UseCardEffect(card.Type, -1 * effectAmount / 2);
+            UseCardEffect(card.Type, -2 * effectAmount);
         }
         else
         {

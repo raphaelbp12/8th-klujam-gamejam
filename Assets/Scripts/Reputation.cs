@@ -53,8 +53,7 @@ public class Reputation : MonoBehaviour
     }
 
     string getReputationNote(){
-        if(_reputation < 50){ return "F"; }
-        else if(_reputation >= 50 && _reputation < 100){ return "E"; }        
+        if(_reputation < 100){ return "F"; }        
         else if(_reputation >= 100 && _reputation < 150){ return "D"; }
         else if(_reputation >= 150 && _reputation < 200){ return "C -"; }
         else if(_reputation >= 200 && _reputation < 250){ return "C"; }
